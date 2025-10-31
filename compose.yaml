@@ -3,8 +3,8 @@ services:
     build: .
     ports:
       - "27016:27015/udp"
-    volumes:
-      - cs_server_data:/dedicated_server
+    #volumes:
+      #- cs_server_data:/dedicated_server
 
 volumes:
   cs_server_data:
