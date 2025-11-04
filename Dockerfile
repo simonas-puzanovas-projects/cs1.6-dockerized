@@ -56,6 +56,9 @@ RUN echo "linux addons/amxmodx/dlls/amxmodx_mm_i386.so" >> /dedicated_server/cst
 RUN mkdir -p /root/.steam/sdk32
 RUN ln -s /steam/linux32/steamclient.so /root/.steam/sdk32/steamclient.so
 
+#pasting configs
+COPY ./amxmodx/configs /dedicated_server/cstrike/addons/amxmodx/configs
+
 #running the setup and start script
 COPY start.sh start.sh
 
@@ -63,4 +66,4 @@ RUN chmod +x start.sh
 RUN chmod +x /dedicated_server/hlds_run
 RUN chmod +x /dedicated_server/hlds_linux
 
-CMD ["./start.sh"]
+#CMD ["./start.sh"]

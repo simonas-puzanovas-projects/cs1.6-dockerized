@@ -3,8 +3,12 @@ services:
     build: .
     ports:
       - "27016:27015/udp"
-    #volumes:
-      #- cs_server_data:/dedicated_server
-
+    command: /steam/start.sh
+    develop:
+      watch:
+        - action: rebuild
+          path: ./amxmodx/configs/
+          target: /dedicated_server/cstrike/addons/amxmodx/configs
+      
 volumes:
   cs_server_data:
