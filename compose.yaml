@@ -9,6 +9,14 @@ services:
         - action: rebuild
           path: ./amxmodx/configs/
           target: /dedicated_server/cstrike/addons/amxmodx/configs
+          ignore:
+            - "**/*.Identifier"
+            - "**/*.log"
+        - action: rebuild
+          path: ./amxmodx/scripting/
+          target: /custom_scripting
+          ignore:
+            - "**/*.Identifier"
       
 volumes:
   cs_server_data:

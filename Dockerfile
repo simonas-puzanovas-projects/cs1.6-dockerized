@@ -10,7 +10,7 @@ ENV AMXMODX_BASE_VERSION=1.8.2
 
 #dependencies
 RUN apt update && \
-    apt install -y unzip wget curl && \
+    apt install -y unzip wget curl less && \
     dpkg --add-architecture i386 && \
     apt install -y software-properties-common lib32gcc-s1 lib32stdc++6 libcurl4 && \
     apt update && \
@@ -56,8 +56,13 @@ RUN echo "linux addons/amxmodx/dlls/amxmodx_mm_i386.so" >> /dedicated_server/cst
 RUN mkdir -p /root/.steam/sdk32
 RUN ln -s /steam/linux32/steamclient.so /root/.steam/sdk32/steamclient.so
 
-#pasting configs
+#pasting configs and scripts
 COPY ./amxmodx/configs /dedicated_server/cstrike/addons/amxmodx/configs
+RUN mkdir /custom_scripting
+COPY ./amxmodx/scripting/ /custom_scripting
+
+#give permission to change for --watch
+#RUN chm#od -R 755 /dedicated_server
 
 #running the setup and start script
 COPY start.sh start.sh
